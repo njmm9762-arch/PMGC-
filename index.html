@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>بطولة PMGC</title>
+<title>بطولة PMGC - النسخة الفخمة</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
 /* ----------------------------- الخلفية والنجوم ----------------------------- */
@@ -16,14 +16,7 @@ body, html{
   position:relative;
   color:#fff;
 }
-
-#stars{
-  position:fixed;
-  width:100%;
-  height:100%;
-  top:0; left:0;
-  z-index:0;
-}
+#stars{position:fixed;width:100%;height:100%;top:0;left:0;z-index:0;}
 .star{
   position:absolute;
   background:white;
@@ -35,22 +28,21 @@ body, html{
   0%,100%{opacity:0.8;}
   50%{opacity:0.2;}
 }
-
 #moon{
   position:fixed;
   top:10%;
   left:50%;
   transform:translateX(-50%);
-  width:120px;
-  height:120px;
+  width:150px;
+  height:150px;
   background: radial-gradient(circle at 30% 30%, #fff, #ccc 60%);
   border-radius:50%;
-  animation: moonMove 15s linear infinite alternate;
+  animation: moonMove 20s linear infinite alternate;
   z-index:0;
 }
 @keyframes moonMove{
   0%{top:10%;}
-  100%{top:13%;}
+  100%{top:14%;}
 }
 
 /* ----------------------------- شاشة الترحيب ----------------------------- */
@@ -58,7 +50,7 @@ body, html{
   position:fixed;
   top:0; left:0;
   width:100%; height:100%;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.9);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -68,15 +60,16 @@ body, html{
 }
 #welcome-screen h1{
   color:#ffd54f;
-  font-size:36px;
-  text-shadow:2px 2px 10px #000;
+  font-size:40px;
+  text-shadow:2px 2px 12px #000;
   margin-bottom:30px;
+  line-height:1.3;
 }
 #welcome-screen button{
-  font-size:26px;
-  padding:18px 50px;
+  font-size:28px;
+  padding:20px 60px;
   border:none;
-  border-radius:15px;
+  border-radius:20px;
   cursor:pointer;
   background:linear-gradient(135deg,#ff9800,#ff5722);
   color:#fff;
@@ -86,63 +79,70 @@ body, html{
 }
 #welcome-screen button:hover{
   transform: scale(1.05);
-  box-shadow:0 0 15px #ff9800;
+  box-shadow:0 0 20px #ff9800;
 }
 
 /* ----------------------------- العنوان الرئيسي ----------------------------- */
 h1.page-title{
-  font-size:30px;
+  font-size:32px;
   text-align:center;
   margin-top:20px;
   margin-bottom:15px;
   color:#ffd54f;
-  text-shadow:2px 2px 8px #000;
+  text-shadow:2px 2px 10px #000;
 }
 
 /* ----------------------------- اللوغ ----------------------------- */
 #log{
   background:rgba(0,0,0,0.5);
-  border-radius:15px;
-  padding:20px;
+  border-radius:20px;
+  padding:25px;
   width:95%;
-  max-width:750px;
-  min-height:150px;
-  margin:15px auto;
+  max-width:800px;
+  min-height:250px;
+  margin:20px auto;
   overflow-y:auto;
   font-size:18px;
   line-height:1.6;
+  direction:rtl;
 }
 
 /* ----------------------------- البطاقات ----------------------------- */
 .pair-card{
   background: rgba(0,0,0,0.75);
-  border-radius: 20px;
+  border-radius: 25px;
   width:95%;
-  max-width:750px;
-  padding:25px;
-  margin-bottom:20px;
+  max-width:800px;
+  padding:30px;
+  margin-bottom:25px;
   display:flex;
   flex-direction:column;
   z-index:1;
-  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+  box-shadow: 0 0 25px rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
 }
-@media(min-width:600px){
+.pair-card:hover{
+  transform: translateY(-5px);
+  box-shadow:0 0 35px rgba(255,255,255,0.3);
+}
+@media(min-width:700px){
   .pair-card{flex-direction:row; justify-content:space-between;}
 }
 .player{
   background: rgba(255,255,255,0.05);
-  padding:15px;
-  border-radius:15px;
-  margin-bottom:15px;
+  padding:20px;
+  border-radius:20px;
+  margin-bottom:20px;
   flex:1;
   text-align:right;
+  transition: all 0.3s ease;
 }
 .copy-btn, .whatsapp-btn{
-  padding:10px 20px;
-  margin-top:8px;
-  margin-right:5px;
+  padding:12px 25px;
+  margin-top:10px;
+  margin-left:5px;
   border:none;
-  border-radius:12px;
+  border-radius:15px;
   cursor:pointer;
   font-weight:bold;
   transition: all 0.3s ease;
@@ -176,90 +176,89 @@ span.letter{
   <button id="start-btn">دخول</button>
 </div>
 
-<h1 class="page-title">PUBG Tournament Players</h1>
+<h1 class="page-title">قائمة اللاعبين</h1>
 <div id="log"></div>
 
-<!-- -------------------- اللاعبين -------------------- -->
-<!-- مثال بطاقة ثنائي -->
-<div class="pair-card">
-  <div class="player">
-    <strong>الاسم:</strong> عمر السيد محمد<br>
-    <strong>اسم اللعبة:</strong> 5L¹丨BOX<br>
-    <strong>ID:</strong> 5535931335<br>
-    <strong>كود:</strong> <input type="text" id="code0" value="5682" readonly style="width:60px;text-align:center;">
-    <button class="copy-btn" onclick="copyCode('code0')">نسخ الكود</button>
-    <button class="whatsapp-btn" onclick="openWhatsapp('code0','عمر السيد محمد','5L¹丨BOX','5535931335')">واتساب</button>
-  </div>
-  <div class="player">
-    <strong>الاسم:</strong> عمر الشافعي<br>
-    <strong>اسم اللعبة:</strong> 5L¹丨LEVI<br>
-    <strong>ID:</strong> 5780015747<br>
-    <strong>كود:</strong> <input type="text" id="code1" value="1683" readonly style="width:60px;text-align:center;">
-    <button class="copy-btn" onclick="copyCode('code1')">نسخ الكود</button>
-    <button class="whatsapp-btn" onclick="openWhatsapp('code1','عمر الشافعي','5L¹丨LEVI','5780015747')">واتساب</button>
-  </div>
-</div>
-
-<!-- يمكن تكرار البطاقات لبقية اللاعبين + الثنائيات + الأحاديين -->
+<!-- -------------------- البطاقات -------------------- -->
+<div id="players-container"></div>
 
 <script>
+// -------------------- اللاعبين والكود --------------------
+var players=[
+  {name:'عمر السيد محمد',game:'5L¹丨BOX',id:'5535931335',code:'5682'},
+  {name:'عمر الشافعي',game:'5L¹丨LEVI',id:'5780015747',code:'1683'},
+  {name:'محمد أحمد',game:'5L¹丨RAMO',id:'5114404295',code:'0618'},
+  {name:'زياد محمود',game:'Кнaled',id:'5181732509',code:'4681'},
+  {name:'فارس محسن',game:'فرţعون',id:'52013524002',code:'8331'},
+  {name:'يوسف عمرو',game:'5L¹丨BOSS',id:'5568744837',code:'1656'},
+  {name:'معاذ محمود',game:'XR个MOAZ',id:'5888700371',code:'8989'},
+  {name:'مهند محمود',game:'ST丨GREY',id:'5789024569',code:'2326'},
+  {name:'محمد سلامه',game:'ST丨TAUG',id:'5964471266',code:'1357'},
+  {name:'عمر',game:'-',id:'5514938673',code:'8452'},
+  {name:'منجا',game:'-',id:'5233336518',code:'5115'}
+];
+
+// -------------------- إنشاء البطاقات --------------------
+var container=document.getElementById('players-container');
+players.forEach(function(p,i){
+  var card=document.createElement('div');
+  card.className='pair-card';
+  var playerDiv=document.createElement('div');
+  playerDiv.className='player';
+  playerDiv.innerHTML=`<strong>الاسم:</strong> ${p.name}<br>
+  <strong>اسم اللعبة:</strong> ${p.game}<br>
+  <strong>ID:</strong> ${p.id}<br>
+  <strong>كود:</strong> <input type="text" id="code${i}" value="${p.code}" readonly style="width:60px;text-align:center;"><br>
+  <button class="copy-btn" onclick="copyCode('code${i}')">نسخ الكود</button>
+  <button class="whatsapp-btn" onclick="openWhatsapp('code${i}','${p.name}','${p.game}','${p.id}')">واتساب</button>`;
+  card.appendChild(playerDiv);
+  container.appendChild(card);
+});
+
 // -------------------- نسخ الكود --------------------
 function copyCode(id){
-  var copyText = document.getElementById(id);
+  var copyText=document.getElementById(id);
   copyText.select();
   copyText.setSelectionRange(0,99999);
   document.execCommand("copy");
-  alert("تم نسخ الكود: " + copyText.value);
+  alert("تم نسخ الكود: "+copyText.value);
 }
 
 // -------------------- واتساب --------------------
 function openWhatsapp(codeId,name,game,id){
-  var code = document.getElementById(codeId).value;
-  var message = `تم قبولي في البطولة، الكود: ${code}\nالاسم: ${name}\nID: ${id}`;
-  window.open(`https://wa.me/201211056530?text=${encodeURIComponent(message)}`, '_blank');
+  var code=document.getElementById(codeId).value;
+  var message=`تم قبولي في البطولة، الكود: ${code}\nالاسم: ${name}\nID: ${id}`;
+  window.open(`https://wa.me/201211056530?text=${encodeURIComponent(message)}`,'_blank');
 }
 
-// -------------------- تشغيل الصوت + الكتابة --------------------
+// -------------------- الكتابة التلقائية + صوت جوجل --------------------
 document.getElementById('start-btn').addEventListener('click',function(){
   document.getElementById('welcome-screen').style.display='none';
-  var log = document.getElementById('log');
-  var players = [
-    {name:'عمر السيد محمد',code:'5682'},
-    {name:'عمر الشافعي',code:'1683'},
-    {name:'محمد أحمد',code:'0618'},
-    {name:'زياد محمود',code:'4681'},
-    {name:'فارس محسن',code:'8331'},
-    {name:'يوسف عمرو',code:'1656'},
-    {name:'معاذ محمود',code:'8989'},
-    {name:'مهند محمود',code:'2326'},
-    {name:'عمر',code:'8452'},
-    {name:'منجا',code:'5115'},
-    {name:'محمد سلامه',code:'1357'}
-  ];
-  var colors = ['#ffd54f','#ffb347','#ffc107','#ff8c00','#ff9800']; // ألوان مركزة
+  var log=document.getElementById('log');
+  var colors=['#ffd54f','#ffb347','#ffc107','#ff8c00','#ff9800','#ffcc80','#ffe57f'];
   var i=0;
   function speakNext(){
     if(i>=players.length) return;
-    var p = players[i];
-    var text = `اللاعب ${p.name} - الكود: ${p.code}. `;
+    var p=players[i];
+    var text=`اللاعب ${p.name} - الكود: ${p.code}. `;
     var idx=0;
     function typeWriter(){
       if(idx<text.length){
-        var span = document.createElement('span');
-        span.textContent = text.charAt(idx);
+        var span=document.createElement('span');
+        span.textContent=text.charAt(idx);
         span.className='letter';
-        span.style.color = colors[idx%colors.length];
+        span.style.color=colors[idx%colors.length];
         log.appendChild(span);
         idx++;
         setTimeout(typeWriter,35);
-      } else {
-        log.innerHTML += '<br>';
+      }else{
+        log.innerHTML+='<br>';
         i++;
         speakNext();
       }
     }
     typeWriter();
-    var utterance = new SpeechSynthesisUtterance(text);
+    var utterance=new SpeechSynthesisUtterance(text);
     utterance.lang='ar-EG';
     utterance.rate=0.95;
     window.speechSynthesis.speak(utterance);
@@ -268,17 +267,18 @@ document.getElementById('start-btn').addEventListener('click',function(){
 });
 
 // -------------------- النجوم --------------------
-for(let i=0;i<70;i++){
-  let star = document.createElement('div');
+for(let i=0;i<100;i++){
+  let star=document.createElement('div');
   star.classList.add('star');
-  let size=Math.random()*2+1;
+  let size=Math.random()*2+1.5;
   star.style.width=size+'px';
   star.style.height=size+'px';
   star.style.top=Math.random()*100+'%';
   star.style.left=Math.random()*100+'%';
-  star.style.animationDuration=(Math.random()*3+2)+'s';
+  star.style.animationDuration=(Math.random()*4+2)+'s';
   document.getElementById('stars').appendChild(star);
 }
+
 </script>
 </body>
 </html>
