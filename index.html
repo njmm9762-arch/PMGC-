@@ -10,12 +10,49 @@ body, html{
   padding:0;
   font-family:sans-serif;
   height:100%;
+  overflow-x:hidden;
+  background: radial-gradient(ellipse at bottom, #0b0c2e 0%, #1b1b3a 100%);
 }
+#stars{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0; left:0;
+  z-index:0;
+}
+.star{
+  position:absolute;
+  background:white;
+  border-radius:50%;
+  opacity:0.8;
+  animation: twinkle linear infinite;
+}
+@keyframes twinkle{
+  0%,100%{opacity:0.8;}
+  50%{opacity:0.2;}
+}
+#moon{
+  position:fixed;
+  top:10%;
+  left:50%;
+  transform:translateX(-50%);
+  width:120px;
+  height:120px;
+  background:radial-gradient(circle at 30% 30%, #fff, #ccc 60%);
+  border-radius:50%;
+  animation: moonMove 20s linear infinite alternate;
+  z-index:0;
+}
+@keyframes moonMove{
+  0%{top:10%;}
+  100%{top:15%;}
+}
+
 #welcome-screen{
   position:fixed;
   top:0; left:0;
   width:100%; height:100%;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background: rgba(0,0,0,0.8);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -24,9 +61,10 @@ body, html{
 }
 #welcome-screen h1{
   color:#ffd54f;
-  font-size:36px;
+  font-size:32px;
   text-shadow:2px 2px 6px #000;
   margin-bottom:20px;
+  text-align:center;
 }
 #welcome-screen button{
   font-size:24px;
@@ -39,13 +77,8 @@ body, html{
   font-weight:bold;
   text-shadow:1px 1px 2px #000;
 }
-body{
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color:#fff;
-  padding:20px;
-}
 h1.page-title{
-  font-size:36px;
+  font-size:28px;
   text-align:center;
   margin-bottom:10px;
   color:#ffd54f;
@@ -72,6 +105,7 @@ h1.page-title{
   margin-bottom:20px;
   display:flex;
   flex-direction:column;
+  z-index:1;
 }
 @media(min-width:600px){
   .pair-card{flex-direction:row; justify-content:space-between;}
@@ -98,7 +132,9 @@ h1.page-title{
 </style>
 </head>
 <body>
-<!-- شاشة الترحيب -->
+<div id="stars"></div>
+<div id="moon"></div>
+
 <div id="welcome-screen">
   <h1>Welcome to the PUBG Tournament Site 2</h1>
   <button id="start-btn">دخول</button>
@@ -107,6 +143,7 @@ h1.page-title{
 <h1 class="page-title">PUBG Tournament Players</h1>
 <div id="log"></div>
 
+<!-- اللاعبين -->
 <!-- ثنائي 1 -->
 <div class="pair-card">
   <div class="player">
@@ -187,6 +224,24 @@ h1.page-title{
   </div>
 </div>
 
+<!-- ثنائي جديد: عمر + منجا -->
+<div class="pair-card">
+  <div class="player">
+    <strong>الاسم:</strong> عمر<br>
+    <strong>ID:</strong> 5514938673<br>
+    <strong>كود:</strong> <input type="text" id="code9" value="8452" readonly style="width:60px;text-align:center;">
+    <button class="copy-btn" onclick="copyCode('code9')">نسخ الكود</button>
+    <button class="whatsapp-btn" onclick="openWhatsapp('code9','عمر','-','5514938673')">واتساب</button>
+  </div>
+  <div class="player">
+    <strong>الاسم:</strong> منجا<br>
+    <strong>ID:</strong> 5233336518<br>
+    <strong>كود:</strong> <input type="text" id="code10" value="5115" readonly style="width:60px;text-align:center;">
+    <button class="copy-btn" onclick="copyCode('code10')">نسخ الكود</button>
+    <button class="whatsapp-btn" onclick="openWhatsapp('code10','منجا','-','5233336518')">واتساب</button>
+  </div>
+</div>
+
 <!-- أحادي -->
 <div class="pair-card">
   <div class="player">
@@ -216,7 +271,7 @@ function openWhatsapp(codeId,name,game,id){
   window.open(`https://wa.me/201211056530?text=${encodeURIComponent(message)}`, '_blank');
 }
 
-// تشغيل الصوت + الكتابة عند الضغط على "دخول" مع تأثير ألوان
+// تشغيل الصوت + الكتابة عند الضغط على "دخول" مع ألوان مركزة
 document.getElementById('start-btn').addEventListener('click',function(){
   document.getElementById('welcome-screen').style.display='none';
   var log = document.getElementById('log');
@@ -229,9 +284,11 @@ document.getElementById('start-btn').addEventListener('click',function(){
     {name:'يوسف عمرو',code:'1656'},
     {name:'معاذ محمود',code:'8989'},
     {name:'مهند محمود',code:'2326'},
+    {name:'عمر',code:'8452'},
+    {name:'منجا',code:'5115'},
     {name:'محمد سلامه',code:'1357'}
   ];
-  var colors = ['#ff5733','#ffbd33','#33ff57','#33d4ff','#8e33ff','#ff33a8','#ffffff','#ffd700'];
+  var colors = ['#ff9800','#ffb347','#ffd700','#ffc107','#ff8c00']; // ألوان ضيقة
   var i=0;
   function speakNext(){
     if(i>=players.length) return;
@@ -242,7 +299,7 @@ document.getElementById('start-btn').addEventListener('click',function(){
       if(idx<text.length){
         var span = document.createElement('span');
         span.textContent = text.charAt(idx);
-        span.style.color = colors[Math.floor(Math.random()*colors.length)];
+        span.style.color = colors[idx%colors.length];
         log.appendChild(span);
         idx++;
         setTimeout(typeWriter,40);
@@ -260,6 +317,19 @@ document.getElementById('start-btn').addEventListener('click',function(){
   }
   speakNext();
 });
+
+// نجوم خلفية
+for(let i=0;i<50;i++){
+  let star = document.createElement('div');
+  star.classList.add('star');
+  let size=Math.random()*2+1;
+  star.style.width=size+'px';
+  star.style.height=size+'px';
+  star.style.top=Math.random()*100+'%';
+  star.style.left=Math.random()*100+'%';
+  star.style.animationDuration=(Math.random()*3+2)+'s';
+  document.getElementById('stars').appendChild(star);
+}
 </script>
 </body>
 </html>
