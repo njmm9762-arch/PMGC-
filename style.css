@@ -1,0 +1,168 @@
+/* ----------------------------- الخلفية والنجوم ----------------------------- */
+body, html{
+  margin:0;
+  padding:0;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height:100%;
+  overflow-x:hidden;
+  background: linear-gradient(to top, #0b0c2e, #1b1b3a);
+  position:relative;
+  color:#fff;
+}
+#stars{position:fixed;width:100%;height:100%;top:0;left:0;z-index:0;}
+.star{
+  position:absolute;
+  background:white;
+  border-radius:50%;
+  opacity:0.8;
+  animation: twinkle linear infinite;
+}
+@keyframes twinkle{
+  0%,100%{opacity:0.8;}
+  50%{opacity:0.2;}
+}
+#moon{
+  position:fixed;
+  top:10%;
+  left:50%;
+  transform:translateX(-50%);
+  width:150px;
+  height:150px;
+  background: radial-gradient(circle at 30% 30%, #fff, #ccc 60%);
+  border-radius:50%;
+  animation: moonMove 20s linear infinite alternate;
+  z-index:0;
+}
+
+/* ----------------------------- شاشة الترحيب ----------------------------- */
+#welcome-screen{
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.9);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:10;
+  text-align:center;
+}
+#welcome-screen h1{
+  color:#ffd54f;
+  font-size:40px;
+  text-shadow:2px 2px 12px #000;
+  margin-bottom:30px;
+  line-height:1.3;
+}
+#welcome-screen button{
+  font-size:28px;
+  padding:20px 60px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff9800,#ff5722);
+  color:#fff;
+  font-weight:bold;
+  text-shadow:1px 1px 2px #000;
+  transition: all 0.3s ease;
+}
+#welcome-screen button:hover{
+  transform: scale(1.05);
+  box-shadow:0 0 20px #ff9800;
+}
+#welcome-screen select{
+  margin-top:20px;
+  font-size:20px;
+  padding:5px 15px;
+  border-radius:10px;
+}
+
+/* ----------------------------- العنوان الرئيسي ----------------------------- */
+h1.page-title{
+  font-size:32px;
+  text-align:center;
+  margin-top:20px;
+  margin-bottom:15px;
+  color:#ffd54f;
+  text-shadow:2px 2px 10px #000;
+}
+
+/* ----------------------------- اللوغ ----------------------------- */
+#log{
+  background:rgba(0,0,0,0.5);
+  border-radius:20px;
+  padding:25px;
+  width:95%;
+  max-width:800px;
+  min-height:250px;
+  margin:20px auto;
+  overflow-y:auto;
+  font-size:18px;
+  line-height:1.6;
+  direction:rtl;
+}
+
+/* ----------------------------- البطاقات ----------------------------- */
+.pair-card{
+  background: rgba(0,0,0,0.75);
+  border-radius: 25px;
+  width:95%;
+  max-width:800px;
+  padding:30px;
+  margin-bottom:25px;
+  display:flex;
+  flex-direction:column;
+  z-index:1;
+  box-shadow: 0 0 25px rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+.pair-card:hover{
+  transform: translateY(-5px);
+  box-shadow:0 0 35px rgba(255,255,255,0.3);
+}
+@media(min-width:700px){
+  .pair-card{flex-direction:row; justify-content:space-between;}
+}
+.player{
+  background: rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:20px;
+  margin-bottom:20px;
+  flex:1;
+  text-align:right;
+  transition: all 0.3s ease;
+}
+.copy-btn, .whatsapp-btn{
+  padding:12px 25px;
+  margin-top:10px;
+  margin-left:5px;
+  border:none;
+  border-radius:15px;
+  cursor:pointer;
+  font-weight:bold;
+  transition: all 0.3s ease;
+}
+.copy-btn{background:linear-gradient(135deg,#ff9800,#ff5722); color:#fff;}
+.whatsapp-btn{background:linear-gradient(135deg,#25D366,#1ebe57); color:#fff;}
+.copy-btn:hover,.whatsapp-btn:hover{opacity:0.85; transform: scale(1.05);}
+
+/* ----------------------------- هزة حرفية ----------------------------- */
+span.letter{
+  display:inline-block;
+  transform-origin:center;
+  animation: shake 0.3s ease forwards;
+}
+@keyframes shake{
+  0%{transform:translateY(0);}
+  25%{transform:translateY(-2px);}
+  50%{transform:translateY(2px);}
+  75%{transform:translateY(-1px);}
+  100%{transform:translateY(0);}
+}
+
+/* ----------------------------- إضافات لتوسيع الأسطر ----------------------------- */
+.pair-card .player strong{
+  text-shadow: 1px 1px 2px #000;
+}
+.player input{border-radius:8px; border:none; padding:5px; font-weight:bold;}
+.player button{font-size:16px;}
