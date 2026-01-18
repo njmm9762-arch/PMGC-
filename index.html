@@ -2,17 +2,21 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>Welcome to the PUBG Tournament Site 2</title>
+<title>بطولة PMGC</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
+/* ----------------------------- الخلفية والنجوم ----------------------------- */
 body, html{
   margin:0;
   padding:0;
-  font-family:sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height:100%;
   overflow-x:hidden;
-  background: radial-gradient(ellipse at bottom, #0b0c2e 0%, #1b1b3a 100%);
+  background: linear-gradient(to top, #0b0c2e, #1b1b3a);
+  position:relative;
+  color:#fff;
 }
+
 #stars{
   position:fixed;
   width:100%;
@@ -31,6 +35,7 @@ body, html{
   0%,100%{opacity:0.8;}
   50%{opacity:0.2;}
 }
+
 #moon{
   position:fixed;
   top:10%;
@@ -38,113 +43,144 @@ body, html{
   transform:translateX(-50%);
   width:120px;
   height:120px;
-  background:radial-gradient(circle at 30% 30%, #fff, #ccc 60%);
+  background: radial-gradient(circle at 30% 30%, #fff, #ccc 60%);
   border-radius:50%;
-  animation: moonMove 20s linear infinite alternate;
+  animation: moonMove 15s linear infinite alternate;
   z-index:0;
 }
 @keyframes moonMove{
   0%{top:10%;}
-  100%{top:15%;}
+  100%{top:13%;}
 }
 
+/* ----------------------------- شاشة الترحيب ----------------------------- */
 #welcome-screen{
   position:fixed;
   top:0; left:0;
   width:100%; height:100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   display:flex;
   justify-content:center;
   align-items:center;
   flex-direction:column;
   z-index:10;
+  text-align:center;
 }
 #welcome-screen h1{
   color:#ffd54f;
-  font-size:32px;
-  text-shadow:2px 2px 6px #000;
-  margin-bottom:20px;
-  text-align:center;
+  font-size:36px;
+  text-shadow:2px 2px 10px #000;
+  margin-bottom:30px;
 }
 #welcome-screen button{
-  font-size:24px;
-  padding:15px 40px;
+  font-size:26px;
+  padding:18px 50px;
   border:none;
-  border-radius:12px;
+  border-radius:15px;
   cursor:pointer;
   background:linear-gradient(135deg,#ff9800,#ff5722);
   color:#fff;
   font-weight:bold;
   text-shadow:1px 1px 2px #000;
+  transition: all 0.3s ease;
 }
+#welcome-screen button:hover{
+  transform: scale(1.05);
+  box-shadow:0 0 15px #ff9800;
+}
+
+/* ----------------------------- العنوان الرئيسي ----------------------------- */
 h1.page-title{
-  font-size:28px;
+  font-size:30px;
   text-align:center;
-  margin-bottom:10px;
+  margin-top:20px;
+  margin-bottom:15px;
   color:#ffd54f;
-  text-shadow:2px 2px 6px #000;
+  text-shadow:2px 2px 8px #000;
 }
+
+/* ----------------------------- اللوغ ----------------------------- */
 #log{
-  background:rgba(0,0,0,0.6);
-  border-radius:12px;
-  padding:15px;
+  background:rgba(0,0,0,0.5);
+  border-radius:15px;
+  padding:20px;
   width:95%;
-  max-width:700px;
-  min-height:120px;
-  margin:20px auto;
+  max-width:750px;
+  min-height:150px;
+  margin:15px auto;
   overflow-y:auto;
   font-size:18px;
-  line-height:1.5;
+  line-height:1.6;
 }
+
+/* ----------------------------- البطاقات ----------------------------- */
 .pair-card{
   background: rgba(0,0,0,0.75);
-  border-radius: 15px;
+  border-radius: 20px;
   width:95%;
-  max-width:700px;
-  padding:20px;
+  max-width:750px;
+  padding:25px;
   margin-bottom:20px;
   display:flex;
   flex-direction:column;
   z-index:1;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 @media(min-width:600px){
   .pair-card{flex-direction:row; justify-content:space-between;}
 }
 .player{
   background: rgba(255,255,255,0.05);
-  padding:12px;
-  border-radius:12px;
-  margin-bottom:12px;
+  padding:15px;
+  border-radius:15px;
+  margin-bottom:15px;
   flex:1;
+  text-align:right;
 }
 .copy-btn, .whatsapp-btn{
-  padding:10px 18px;
+  padding:10px 20px;
   margin-top:8px;
   margin-right:5px;
   border:none;
   border-radius:12px;
   cursor:pointer;
   font-weight:bold;
+  transition: all 0.3s ease;
 }
-.copy-btn{background:linear-gradient(135deg,#ff9800,#ff5722);}
-.whatsapp-btn{background:linear-gradient(135deg,#25D366,#1ebe57);}
-.copy-btn:hover,.whatsapp-btn:hover{opacity:0.9;}
+.copy-btn{background:linear-gradient(135deg,#ff9800,#ff5722); color:#fff;}
+.whatsapp-btn{background:linear-gradient(135deg,#25D366,#1ebe57); color:#fff;}
+.copy-btn:hover,.whatsapp-btn:hover{opacity:0.85; transform: scale(1.05);}
+
+/* ----------------------------- هزة حرفية ----------------------------- */
+span.letter{
+  display:inline-block;
+  transform-origin:center;
+  animation: shake 0.3s ease forwards;
+}
+@keyframes shake{
+  0%{transform:translateY(0);}
+  25%{transform:translateY(-2px);}
+  50%{transform:translateY(2px);}
+  75%{transform:translateY(-1px);}
+  100%{transform:translateY(0);}
+}
 </style>
 </head>
 <body>
+
 <div id="stars"></div>
 <div id="moon"></div>
 
 <div id="welcome-screen">
-  <h1>Welcome to the PUBG Tournament Site 2</h1>
+  <h1>مرحبًا بك في موقع بطولة PMGC<br>✨ تحية من النجم ✨</h1>
   <button id="start-btn">دخول</button>
 </div>
 
 <h1 class="page-title">PUBG Tournament Players</h1>
 <div id="log"></div>
 
-<!-- اللاعبين -->
-<!-- ثنائي 1 -->
+<!-- -------------------- اللاعبين -------------------- -->
+<!-- مثال بطاقة ثنائي -->
 <div class="pair-card">
   <div class="player">
     <strong>الاسم:</strong> عمر السيد محمد<br>
@@ -164,98 +200,10 @@ h1.page-title{
   </div>
 </div>
 
-<!-- ثنائي 2 -->
-<div class="pair-card">
-  <div class="player">
-    <strong>الاسم:</strong> محمد أحمد<br>
-    <strong>اسم اللعبة:</strong> 5L¹丨RAMO<br>
-    <strong>ID:</strong> 5114404295<br>
-    <strong>كود:</strong> <input type="text" id="code2" value="0618" readonly style="width:60px;text-align:center;">
-    <button class="copy-btn" onclick="copyCode('code2')">نسخ الكود</button>
-    <button class="whatsapp-btn" onclick="openWhatsapp('code2','محمد أحمد','5L¹丨RAMO','5114404295')">واتساب</button>
-  </div>
-  <div class="player">
-    <strong>الاسم:</strong> زياد محمود<br>
-    <strong>اسم اللعبة:</strong> Кнaled<br>
-    <strong>ID:</strong> 5181732509<br>
-    <strong>كود:</strong> <input type="text" id="code3" value="4681" readonly style="width:60px;text-align:center;">
-    <button class="copy-btn" onclick="copyCode('code3')">نسخ الكود</button>
-    <button class="whatsapp-btn" onclick="openWhatsapp('code3','زياد محمود','Кнaled','5181732509')">واتساب</button>
-  </div>
-</div>
-
-<!-- ثنائي 3 -->
-<div class="pair-card">
-  <div class="player">
-    <strong>الاسم:</strong> فارس محسن<br>
-    <strong>اسم اللعبة:</strong> فرţعون<br>
-    <strong>ID:</strong> 52013524002<br>
-    <strong>كود:</strong> <input type="text" id="code4" value="8331" readonly style="width:60px;text-align:center;">
-    <button class="copy-btn" onclick="copyCode('code4')">نسخ الكود</button>
-    <button class="whatsapp-btn" onclick="openWhatsapp('code4','فارس محسن','فرţعون','52013524002')">واتساب</button>
-  </div>
-  <div class="player">
-    <strong>الاسم:</strong> يوسف عمرو<br>
-    <strong>اسم اللعبة:</strong> 5L¹丨BOSS<br>
-    <strong>ID:</strong> 5568744837<br>
-    <strong>كود:</strong> <input type="text" id="code5" value="1656" readonly style="width:60px;text-align:center;">
-    <button class="copy-btn" onclick="copyCode('code5')">نسخ الكود</button>
-    <button class="whatsapp-btn" onclick="openWhatsapp('code5','يوسف عمرو','5L¹丨BOSS','5568744837')">واتساب</button>
-  </div>
-</div>
-
-<!-- ثنائي 4 -->
-<div class="pair-card">
-  <div class="player">
-    <strong>الاسم:</strong> معاذ محمود<br>
-    <strong>اسم اللعبة:</strong> XR个MOAZ<br>
-    <strong>ID:</strong> 5888700371<br>
-    <strong>كود:</strong> <input type="text" id="code6" value="8989" readonly style="width:60px;text-align:center;">
-    <button class="copy-btn" onclick="copyCode('code6')">نسخ الكود</button>
-    <button class="whatsapp-btn" onclick="openWhatsapp('code6','معاذ محمود','XR个MOAZ','5888700371')">واتساب</button>
-  </div>
-  <div class="player">
-    <strong>الاسم:</strong> مهند محمود<br>
-    <strong>اسم اللعبة:</strong> ST丨GREY<br>
-    <strong>ID:</strong> 5789024569<br>
-    <strong>كود:</strong> <input type="text" id="code7" value="2326" readonly style="width:60px;text-align:center;">
-    <button class="copy-btn" onclick="copyCode('code7')">نسخ الكود</button>
-    <button class="whatsapp-btn" onclick="openWhatsapp('code7','مهند محمود','ST丨GREY','5789024569')">واتساب</button>
-  </div>
-</div>
-
-<!-- ثنائي جديد: عمر + منجا -->
-<div class="pair-card">
-  <div class="player">
-    <strong>الاسم:</strong> عمر<br>
-    <strong>ID:</strong> 5514938673<br>
-    <strong>كود:</strong> <input type="text" id="code9" value="8452" readonly style="width:60px;text-align:center;">
-    <button class="copy-btn" onclick="copyCode('code9')">نسخ الكود</button>
-    <button class="whatsapp-btn" onclick="openWhatsapp('code9','عمر','-','5514938673')">واتساب</button>
-  </div>
-  <div class="player">
-    <strong>الاسم:</strong> منجا<br>
-    <strong>ID:</strong> 5233336518<br>
-    <strong>كود:</strong> <input type="text" id="code10" value="5115" readonly style="width:60px;text-align:center;">
-    <button class="copy-btn" onclick="copyCode('code10')">نسخ الكود</button>
-    <button class="whatsapp-btn" onclick="openWhatsapp('code10','منجا','-','5233336518')">واتساب</button>
-  </div>
-</div>
-
-<!-- أحادي -->
-<div class="pair-card">
-  <div class="player">
-    <strong>الاسم:</strong> محمد سلامه<br>
-    <strong>اسم اللعبة:</strong> ST丨TAUG<br>
-    <strong>ID:</strong> 5964471266<br>
-    <strong>كود:</strong> <input type="text" id="code8" value="1357" readonly style="width:60px;text-align:center;">
-    <button class="copy-btn" onclick="copyCode('code8')">نسخ الكود</button>
-    <button class="whatsapp-btn" onclick="openWhatsapp('code8','محمد سلامه','ST丨TAUG','5964471266')">واتساب</button>
-  </div>
-</div>
+<!-- يمكن تكرار البطاقات لبقية اللاعبين + الثنائيات + الأحاديين -->
 
 <script>
-// نسخ الكود
+// -------------------- نسخ الكود --------------------
 function copyCode(id){
   var copyText = document.getElementById(id);
   copyText.select();
@@ -264,14 +212,14 @@ function copyCode(id){
   alert("تم نسخ الكود: " + copyText.value);
 }
 
-// واتساب
+// -------------------- واتساب --------------------
 function openWhatsapp(codeId,name,game,id){
   var code = document.getElementById(codeId).value;
   var message = `تم قبولي في البطولة، الكود: ${code}\nالاسم: ${name}\nID: ${id}`;
   window.open(`https://wa.me/201211056530?text=${encodeURIComponent(message)}`, '_blank');
 }
 
-// تشغيل الصوت + الكتابة عند الضغط على "دخول" مع ألوان مركزة
+// -------------------- تشغيل الصوت + الكتابة --------------------
 document.getElementById('start-btn').addEventListener('click',function(){
   document.getElementById('welcome-screen').style.display='none';
   var log = document.getElementById('log');
@@ -288,7 +236,7 @@ document.getElementById('start-btn').addEventListener('click',function(){
     {name:'منجا',code:'5115'},
     {name:'محمد سلامه',code:'1357'}
   ];
-  var colors = ['#ff9800','#ffb347','#ffd700','#ffc107','#ff8c00']; // ألوان ضيقة
+  var colors = ['#ffd54f','#ffb347','#ffc107','#ff8c00','#ff9800']; // ألوان مركزة
   var i=0;
   function speakNext(){
     if(i>=players.length) return;
@@ -299,10 +247,11 @@ document.getElementById('start-btn').addEventListener('click',function(){
       if(idx<text.length){
         var span = document.createElement('span');
         span.textContent = text.charAt(idx);
+        span.className='letter';
         span.style.color = colors[idx%colors.length];
         log.appendChild(span);
         idx++;
-        setTimeout(typeWriter,40);
+        setTimeout(typeWriter,35);
       } else {
         log.innerHTML += '<br>';
         i++;
@@ -318,8 +267,8 @@ document.getElementById('start-btn').addEventListener('click',function(){
   speakNext();
 });
 
-// نجوم خلفية
-for(let i=0;i<50;i++){
+// -------------------- النجوم --------------------
+for(let i=0;i<70;i++){
   let star = document.createElement('div');
   star.classList.add('star');
   let size=Math.random()*2+1;
